@@ -1,0 +1,15 @@
+# Cloudflare Pages automatically serves extensionless routes for matching .html files.
+# Do not redirect /docs -> /docs.html (or similar), because Pages canonicalizes
+# /docs.html -> /docs and that creates ERR_TOO_MANY_REDIRECTS.
+/documentation /docs 301
+/privacy-policy /privacy 301
+/terms-of-service /terms 301
+
+# Backend deployment source is included for the owner but should not be served by Pages.
+/worker/* /404.html 404
+/supabase/* /404.html 404
+/scripts/* /404.html 404
+/ANTI_TAMPER_MIGRATION.sql /404.html 404
+/ANTI_TAMPER_SETUP.md /404.html 404
+/SUPABASE_SETUP.sql /404.html 404
+/README.md /404.html 404

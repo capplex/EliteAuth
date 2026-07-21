@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Documentation — EliteAuth</title><link href="/assets/eliteauth-logo.png" rel="icon"/><link href="/styles.css?v=20260721-4" rel="stylesheet"/><meta content="Integrate EliteAuth using the included SDKs and language-neutral licensing API." name="description"/><meta content="#08040d" name="theme-color"/><meta content="dark" name="color-scheme"/><meta content="website" property="og:type"/><meta content="EliteAuth" property="og:site_name"/><meta content="Documentation — EliteAuth" property="og:title"/><meta content="Integrate EliteAuth using the included SDKs and language-neutral licensing API." property="og:description"/><meta content="https://eliteauth.lol/docs.html" property="og:url"/><meta content="summary" name="twitter:card"/><meta content="Documentation — EliteAuth" name="twitter:title"/><meta content="Integrate EliteAuth using the included SDKs and language-neutral licensing API." name="twitter:description"/><link href="https://eliteauth.lol/docs.html" rel="canonical"/><link href="/site.webmanifest" rel="manifest"/></head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="nav-wrap">
+<nav aria-label="Primary navigation" class="nav container">
+<a aria-label="EliteAuth home" class="brand" href="index.html"><img alt="" src="/assets/eliteauth-logo.png"/><span>Elite<span class="gradient-text">Auth</span></span></a>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="Open navigation" class="menu-btn" id="menuBtn" type="button"><span></span><span></span><span></span></button>
+<div class="nav-links" id="navLinks">
+<div class="nav-dropdown">
+<a class="nav-trigger" href="product.html">Product <span aria-hidden="true">⌄</span></a>
+<div class="nav-dropdown-menu">
+<a href="product.html">Product overview</a>
+<a href="features.html">Features</a>
+<a href="security.html">Security</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a aria-current="page" class="nav-trigger active" href="docs.html">Resources <span aria-hidden="true">⌄</span></a>
+<div class="nav-dropdown-menu">
+<a aria-current="page" class="active" href="docs.html">Documentation</a>
+<a href="faq.html">FAQ</a>
+<a href="responsible-disclosure.html">Responsible disclosure</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a class="nav-trigger" href="about.html">Company <span aria-hidden="true">⌄</span></a>
+<div class="nav-dropdown-menu">
+<a href="about.html">About EliteAuth</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a class="nav-trigger" href="terms.html">Legal <span aria-hidden="true">⌄</span></a>
+<div class="nav-dropdown-menu">
+<a href="terms.html">Terms</a>
+<a href="privacy.html">Privacy</a>
+<a href="cookies.html">Cookies</a>
+<a href="acceptable-use.html">Acceptable use</a>
+</div>
+</div>
+<a class="nav-single" href="donate.html">Donate</a>
+</div>
+<div class="nav-actions"><a class="btn btn-ghost" href="login.html">Sign in</a><a class="btn btn-primary" href="register.html">Get started →</a></div>
+</nav>
+</header>
+<main class="page-main docs-page" id="main-content">
+<section class="page-hero container reveal">
+<span class="page-kicker">Documentation</span>
+<h1>Integrate EliteAuth <span class="gradient-text">with confidence.</span></h1>
+<p>Create an application, issue licenses, activate a device, and continuously verify the returned session through the same language-neutral HTTP API.</p>
+<div class="page-hero-actions"><a class="btn btn-primary btn-large" href="#quickstart">Start the quickstart →</a><a class="btn btn-secondary btn-large" href="mailto:support@eliteauth.lol">Ask support</a></div>
+</section>
+<div class="container docs-layout">
+<aside aria-label="Documentation sections" class="docs-sidebar">
+<strong>On this page</strong>
+<a href="#quickstart">Quickstart</a><a href="#credentials">Credentials</a><a href="#activate">Activate a license</a><a href="#session">Check a session</a><a href="#anti-tampering">Anti-tampering</a><a href="#sdks">SDKs</a><a href="#security-guidance">Security guidance</a><a href="#deployment">Deployment</a><a href="#support">Support</a>
+</aside>
+<article class="docs-content">
+<section class="doc-section reveal" id="quickstart"><span class="page-kicker">Quickstart</span><h2>Five steps to a signed, replay-resistant session.</h2>
+<div class="doc-steps"><div><span>1</span><p><b>Hash your release build</b> with SHA-256 and keep the exact value for the dashboard.</p></div><div><span>2</span><p><b>Create an application</b>, enable build-integrity enforcement, and paste the approved hash.</p></div><div><span>3</span><p><b>Generate a license</b> and choose its duration. Timed licenses begin on first successful device bind.</p></div><div><span>4</span><p><b>Configure an SDK</b> with the API URL, App ID, version, and approved build hash.</p></div><div><span>5</span><p><b>Activate and revalidate</b>. The SDK verifies Ed25519 signatures and rotates a one-time challenge.</p></div></div>
+</section>
+<section class="doc-section reveal" id="credentials"><span class="page-kicker">Credentials</span><h2>Know what belongs in the client.</h2>
+<div class="credential-table"><div><b>EliteAuth API URL</b><span>Client-safe</span><p>The managed API base URL: https://api.eliteauth.lol.</p></div><div><b>App ID</b><span>Client-safe</span><p>Public identifier for one EliteAuth application.</p></div><div><b>Approved build SHA-256</b><span>Client-safe</span><p>Hash of the exact executable or package approved in the dashboard.</p></div><div><b>Response verification key</b><span>Pin in SDK</span><p><code>Yo7wBxsz8mCN6LX89Ja0H3pNlcLXJHrJ50u5BtZuakQ</code></p></div><div><b>Server secret</b><span class="danger-text">Server only</span><p>Never embed it in distributed software.</p></div><div><b>Signing private key</b><span class="danger-text">Worker only</span><p>Store only as the encrypted Cloudflare secret <code>ELITEAUTH_SIGNING_PRIVATE_JWK</code>.</p></div></div>
+</section>
+<section class="doc-section reveal" id="activate"><span class="method-badge">POST</span><code>/v1/license/activate</code><h2>Activate a license.</h2><p>The SDK sends a fresh nonce, a short-lived timestamp, and the approved build SHA-256. The API validates the license and returns a signed session token plus a one-time challenge.</p>
+<div class="code-grid"><div><h3>Request</h3><pre><code>{
+  "app_id": "YOUR_APP_ID",
+  "license_key": "ELITE-7F2K-9XQM-4LPA",
+  "hwid": "HASHED_STABLE_DEVICE_ID",
+  "version": "1.0.0",
+  "sdk_version": "cpp-1.1.0",
+  "integrity_sha256": "APP_BUILD_SHA256",
+  "timestamp": 1784642400,
+  "nonce": "RANDOM_BASE64URL_NONCE"
+}</code></pre></div><div><h3>Signed envelope</h3><pre><code>{
+  "key_id": "eliteauth-ed25519-2026-01",
+  "algorithm": "Ed25519",
+  "payload": "BASE64URL_VERIFIED_JSON",
+  "signature": "BASE64URL_SIGNATURE"
+}</code></pre></div></div>
+<p class="doc-note">The SDK verifies the signature before reading the payload. A successful verified payload contains the session token, expiry, and the first one-time challenge.</p>
+<div class="response-list"><div><code>200</code><span>License authenticated and signed session created.</span></div><div><code>400</code><span>Required input, nonce, timestamp, or hash is invalid.</span></div><div><code>401</code><span>Invalid license.</span></div><div><code>403</code><span>License state, HWID, version, or build-integrity policy rejected the request.</span></div><div><code>409</code><span>Nonce replay detected.</span></div><div><code>426</code><span>Client version does not match the allowed version.</span></div></div>
+</section>
+<section class="doc-section reveal" id="session"><span class="method-badge">POST</span><code>/v1/session/check</code><h2>Revalidate a session.</h2><p>Each check consumes the previous challenge and returns a newly signed challenge. Reusing an old nonce or challenge is rejected.</p><pre><code>{
+  "app_id": "YOUR_APP_ID",
+  "session_token": "TOKEN_FROM_ACTIVATION",
+  "challenge": "PREVIOUS_ONE_TIME_CHALLENGE",
+  "hwid": "HASHED_STABLE_DEVICE_ID",
+  "sdk_version": "cpp-1.1.0",
+  "integrity_sha256": "APP_BUILD_SHA256",
+  "timestamp": 1784642460,
+  "nonce": "NEW_RANDOM_BASE64URL_NONCE"
+}</code></pre></section>
+<section class="doc-section reveal" id="anti-tampering"><span class="page-kicker">Anti-tampering</span><h2>What the protection actually enforces.</h2><div class="security-callout"><p><b>Signed responses:</b> the Worker signs the exact payload bytes with an Ed25519 private key. SDKs pin the public key and fail closed if verification fails.</p><p><b>Replay protection:</b> every request has a short-lived timestamp and unique nonce; session checks also rotate a server-stored one-time challenge.</p><p><b>Build allowlisting:</b> when enabled, the API compares the SDK-provided SHA-256 with the approved application build hash.</p><p><b>Security events:</b> integrity mismatches, duplicate nonces, and challenge replays are stored in Supabase.</p></div><p class="doc-note">No client-side system can make a program impossible to patch on a device controlled by an attacker. This design detects ordinary modification and prevents forged or replayed API responses, but important authorization must still remain server-side.</p></section>
+<section class="doc-section reveal" id="sdks"><span class="page-kicker">SDKs</span><h2>Use the client that fits your stack.</h2><p>The package includes C#, C++, Python, JavaScript, TypeScript, Java, Go, and Rust clients. Every SDK verifies the same signed envelope, sends a nonce and timestamp, supplies the approved build hash, and rotates the one-time session challenge.</p>
+<div aria-label="SDK integration example" class="sdk-tabs" id="sdkExample">
+<div class="sdk-tab-label"><span id="sdkLanguage">JavaScript</span><small id="sdkPath">sdk/javascript/eliteauth.js</small></div>
+<pre aria-live="polite"><code id="sdkCode">import { EliteAuthClient } from "./eliteauth.js";
+
+const auth = new EliteAuthClient(
+  "https://api.eliteauth.lol",
+  "YOUR_APP_ID",
+  "1.0.0",
+  { integritySha256: "APP_BUILD_SHA256" }
+);
+
+const result = await auth.activate(licenseKey, hwid);
+if (!result.success) throw new Error(result.error);
+
+const session = await auth.checkSession(hwid);</code></pre>
+</div>
+<div aria-label="Choose an SDK language" class="sdk-grid" role="tablist">
+<button data-sdk="csharp" role="tab" type="button">C#</button>
+<button data-sdk="cpp" role="tab" type="button">C++</button>
+<button data-sdk="python" role="tab" type="button">Python</button>
+<button aria-selected="true" class="active" data-sdk="javascript" role="tab" type="button">JavaScript</button>
+<button data-sdk="typescript" role="tab" type="button">TypeScript</button>
+<button data-sdk="java" role="tab" type="button">Java</button>
+<button data-sdk="go" role="tab" type="button">Go</button>
+<button data-sdk="rust" role="tab" type="button">Rust</button>
+</div>
+</section>
+<section class="doc-section reveal" id="security-guidance"><span class="page-kicker">Security guidance</span><h2>Integrate defensively.</h2><ul class="doc-list"><li>Never ship the application server secret or Supabase service-role key in client software.</li><li>Use HTTPS only and restrict the Worker <code>ALLOWED_ORIGIN</code> setting to the intended website origin where browser access is required.</li><li>Generate a stable device identifier without collecting unnecessary personal information; hash it before transmission when appropriate.</li><li>Keep the Ed25519 public key pinned in the SDK. Do not download a replacement key dynamically during authentication.</li><li>Hash the exact release artifact and update the dashboard hash whenever you publish a new build.</li><li>Treat client-side checks as best-effort. Keep high-value authorization decisions on infrastructure you control.</li><li>Rotate any secret immediately after suspected exposure and disable affected licenses or applications while investigating.</li></ul><p class="doc-note">For vulnerability reports, follow the <a href="responsible-disclosure.html">Responsible Disclosure Policy</a> or email <a href="mailto:security@eliteauth.lol">security@eliteauth.lol</a>.</p></section>
+<section class="doc-section reveal" id="deployment"><span class="page-kicker">Deployment</span><h2>Production checklist.</h2><div class="check-list large"><div>Run <code>ANTI_TAMPER_MIGRATION.sql</code> in Supabase SQL Editor.</div><div>Store <code>SUPABASE_SERVICE_ROLE_KEY</code> and <code>ELITEAUTH_SIGNING_PRIVATE_JWK</code> as encrypted Worker secrets.</div><div>Set the correct Supabase URL and allowed website origin in the Worker configuration.</div><div>Replace the Worker with <code>worker/worker.js</code>, deploy it, and verify <code>GET /health</code> plus <code>GET /v1/keys</code>.</div><div>Configure Supabase authentication site and redirect URLs for the production domain.</div><div>Deploy the root website files to Cloudflare Pages. Backend source paths are blocked by the included redirect rules.</div><div>Test registration, email verification, login, license activation, session validation, and HWID reset approval end to end.</div></div></section>
+<section class="doc-section doc-support reveal" id="support"><span class="page-kicker">Support</span><h2>Need implementation help?</h2><p>Email <a href="mailto:support@eliteauth.lol">support@eliteauth.lol</a> or contact the official Discord account <strong>eliteauth</strong>. Administrative requests can be sent to <a href="mailto:admin@eliteauth.lol">admin@eliteauth.lol</a>.</p></section>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container footer-grid">
+<div class="footer-brand-column">
+<a class="brand" href="index.html"><img alt="" src="/assets/eliteauth-logo.png"/><span>Elite<span class="gradient-text">Auth</span></span></a>
+<p>Authentication, software licensing, device binding, and session management for developers.</p>
+<div class="footer-community"><span>Official Discord</span><strong>eliteauth</strong></div>
+</div>
+<div class="footer-column"><h2>Product</h2><a href="product.html">Overview</a><a href="features.html">Features</a><a href="security.html">Security</a><a href="docs.html">Documentation</a></div>
+<div class="footer-column"><h2>Company</h2><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="donate.html">Donate</a><a href="responsible-disclosure.html">Responsible disclosure</a></div>
+<div class="footer-column"><h2>Legal</h2><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="cookies.html">Cookies</a><a href="acceptable-use.html">Acceptable use</a></div>
+<div class="footer-column footer-contact"><h2>Contact</h2><a href="mailto:support@eliteauth.lol">Support<br/><span>support@eliteauth.lol</span></a><a href="mailto:admin@eliteauth.lol">Administration<br/><span>admin@eliteauth.lol</span></a><a href="mailto:security@eliteauth.lol">Security<br/><span>security@eliteauth.lol</span></a></div>
+</div>
+<div class="container footer-bottom"><span>© 2026 EliteAuth. All rights reserved.</span><span>Free forever. Optional donations never unlock extra features.</span></div>
+</footer>
+<script src="/app.js?v=20260721-5"></script>
+</body></html>

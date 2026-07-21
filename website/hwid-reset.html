@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Request HWID Reset — EliteAuth</title>
+<link href="/assets/eliteauth-logo.png" rel="icon"/><link href="/styles.css?v=20260721-4" rel="stylesheet"/>
+<meta content="Request an owner-approved EliteAuth device binding reset." name="description"/><meta content="#08040d" name="theme-color"/><link href="/site.webmanifest" rel="manifest"/></head>
+<body data-page="hwid-reset">
+<main class="auth-page">
+<section class="auth-shell">
+<div class="auth-head">
+<a href="index.html"><img alt="EliteAuth" src="/assets/eliteauth-logo.png"/></a>
+<h1>Request HWID reset</h1>
+<p>Your request will be sent to the software developer for manual approval.</p>
+</div>
+<p class="form-message" hidden="" id="resetMessage"></p>
+<form id="hwidResetForm">
+<div class="field">
+<label>Why do you need the reset?</label>
+<textarea maxlength="500" name="reason" placeholder="Example: I upgraded my motherboard and can no longer activate my license." rows="5"></textarea>
+</div>
+<button class="btn btn-primary btn-large" style="width:100%" type="submit">Submit HWID reset request</button>
+</form>
+<div class="auth-foot">The reset is not automatic. The developer must approve it.</div>
+<nav aria-label="Helpful links" class="auth-resource-links"><a href="docs.html">Docs</a><a href="faq.html">FAQ</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav><p class="auth-support">Support: <a href="mailto:support@eliteauth.lol">support@eliteauth.lol</a> · Discord <strong>eliteauth</strong></p></section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/supabase-config.js?v=20260721-2"></script>
+<script src="/app.js?v=20260721-5"></script>
+</body></html>

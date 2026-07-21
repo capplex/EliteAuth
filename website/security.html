@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Learn how EliteAuth protects software licenses, device bindings, sessions, dashboard data, and privileged credentials." name="description"/>
+<meta content="#08040d" name="theme-color"/>
+<meta content="dark" name="color-scheme"/>
+<meta content="website" property="og:type"/>
+<meta content="EliteAuth" property="og:site_name"/>
+<meta content="Security — EliteAuth" property="og:title"/>
+<meta content="Learn how EliteAuth protects software licenses, device bindings, sessions, dashboard data, and privileged credentials." property="og:description"/>
+<meta content="https://eliteauth.lol/security.html" property="og:url"/>
+<link href="https://eliteauth.lol/security.html" rel="canonical"/>
+<title>Security — EliteAuth</title>
+<link href="/assets/eliteauth-logo.png" rel="icon"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<link href="/styles.css?v=20260721-4" rel="stylesheet"/>
+<meta content="summary" name="twitter:card"/><meta content="Security — EliteAuth" name="twitter:title"/><meta content="Learn how EliteAuth protects software licenses, device bindings, sessions, dashboard data, and privileged credentials." name="twitter:description"/></head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="nav-wrap">
+<nav aria-label="Primary navigation" class="nav container">
+<a aria-label="EliteAuth home" class="brand" href="index.html"><img alt="" src="/assets/eliteauth-logo.png"/><span>Elite<span class="gradient-text">Auth</span></span></a>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="Open navigation" class="menu-btn" id="menuBtn" type="button"><span></span><span></span><span></span></button>
+<div class="nav-links" id="navLinks">
+<div class="nav-dropdown">
+<a class="nav-trigger active" href="product.html">Product <span aria-hidden="true">⌄</span></a>
+<div class="nav-dropdown-menu">
+<a href="product.html">Product overview</a>
+<a href="features.html">Features</a>
+<a aria-current="page" class="active" href="security.html">Security</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a class="nav-trigger" href="docs.html">Resources <span aria-hidden="true">⌄</span></a>
+<div class="nav-dropdown-menu">
+<a href="docs.html">Documentation</a>
+<a href="faq.html">FAQ</a>
+<a href="responsible-disclosure.html">Responsible disclosure</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a class="nav-trigger" href="about.html">Company <span aria-hidden="true">⌄</span></a>
+<div class="nav-dropdown-menu">
+<a href="about.html">About EliteAuth</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a class="nav-trigger" href="terms.html">Legal <span aria-hidden="true">⌄</span></a>
+<div class="nav-dropdown-menu">
+<a href="terms.html">Terms</a>
+<a href="privacy.html">Privacy</a>
+<a href="cookies.html">Cookies</a>
+<a href="acceptable-use.html">Acceptable use</a>
+</div>
+</div>
+<a class="nav-single" href="donate.html">Donate</a>
+</div>
+<div class="nav-actions"><a class="btn btn-ghost" href="login.html">Sign in</a><a class="btn btn-primary" href="register.html">Get started →</a></div>
+</nav>
+</header>
+<main class="page-main" id="main-content">
+<section class="page-hero container reveal">
+<span class="page-kicker">Security</span>
+<h1>Security designed into <span class="gradient-text">every request.</span></h1>
+<p>EliteAuth validates licenses, devices, versions, approved release hashes, nonces, and rotating session challenges before granting access. API responses are signed with Ed25519 and verified by the SDK.</p>
+<div class="page-hero-actions"><a class="btn btn-primary btn-large" href="responsible-disclosure.html">Report a vulnerability</a><a class="btn btn-secondary btn-large" href="docs.html#security-guidance">Integration guidance</a></div>
+</section>
+<section class="container page-section reveal"><div class="security-principles">
+<article class="content-card"><div class="feature-icon">01</div><h2>Least-secret client design</h2><p>Client applications use an API URL, App ID, and version. Supabase service-role credentials and application server secrets belong only in trusted environments.</p></article>
+<article class="content-card"><div class="feature-icon">02</div><h2>Signed API responses</h2><p>The Worker signs exact response payload bytes with Ed25519. SDKs pin the public key and reject modified, unsigned, stale, or nonce-mismatched responses.</p></article>
+<article class="content-card"><div class="feature-icon">03</div><h2>Replay resistance</h2><p>Short-lived request timestamps, unique nonces, hashed session tokens, and one-time rotating challenges reject captured request reuse.</p></article>
+<article class="content-card"><div class="feature-icon">04</div><h2>Build integrity policy</h2><p>Application owners can approve a release SHA-256 and require every activation and session check to match that exact build hash.</p></article>
+</div></section>
+<section class="page-band reveal"><div class="container product-split"><div><span class="page-kicker">Defense in depth</span><h2>Controls across the full path.</h2><p>Security depends on the platform and on correct customer integration. Keep privileged credentials server-side, restrict allowed origins, use HTTPS, rotate secrets after exposure, and treat device identifiers as access signals rather than perfect identity.</p></div><div class="security-layers"><div><span>Browser dashboard</span><b>Authenticated owner access + RLS</b></div><div><span>Worker API</span><b>Ed25519 signing + timestamp and nonce validation</b></div><div><span>License service</span><b>Status, version, expiry, HWID, and build-hash enforcement</b></div><div><span>Runtime</span><b>Signed responses + rotating one-time challenges</b></div></div></div></section>
+<section class="container page-section reveal"><div class="notice-card"><div><span class="page-kicker">Security contact</span><h2>Found something that needs attention?</h2><p>Send technical reports to <a href="mailto:security@eliteauth.lol">security@eliteauth.lol</a>. Do not include active secrets in an initial report.</p></div><a class="btn btn-primary" href="responsible-disclosure.html">Read disclosure policy →</a></div></section>
+</main>
+<footer class="site-footer">
+<div class="container footer-grid">
+<div class="footer-brand-column">
+<a class="brand" href="index.html"><img alt="" src="/assets/eliteauth-logo.png"/><span>Elite<span class="gradient-text">Auth</span></span></a>
+<p>Authentication, software licensing, device binding, and session management for developers.</p>
+<div class="footer-community"><span>Official Discord</span><strong>eliteauth</strong></div>
+</div>
+<div class="footer-column"><h2>Product</h2><a href="product.html">Overview</a><a href="features.html">Features</a><a href="security.html">Security</a><a href="docs.html">Documentation</a></div>
+<div class="footer-column"><h2>Company</h2><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="donate.html">Donate</a><a href="responsible-disclosure.html">Responsible disclosure</a></div>
+<div class="footer-column"><h2>Legal</h2><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="cookies.html">Cookies</a><a href="acceptable-use.html">Acceptable use</a></div>
+<div class="footer-column footer-contact"><h2>Contact</h2><a href="mailto:support@eliteauth.lol">Support<br/><span>support@eliteauth.lol</span></a><a href="mailto:admin@eliteauth.lol">Administration<br/><span>admin@eliteauth.lol</span></a><a href="mailto:security@eliteauth.lol">Security<br/><span>security@eliteauth.lol</span></a></div>
+</div>
+<div class="container footer-bottom"><span>© 2026 EliteAuth. All rights reserved.</span><span>Free forever. Optional donations never unlock extra features.</span></div>
+</footer>
+<script src="/app.js?v=20260721-5"></script>
+</body>
+</html>

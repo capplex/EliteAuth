@@ -1,0 +1,9 @@
+name = "eliteauth-api"
+main = "worker.js"
+compatibility_date = "2026-07-21"
+
+# Configure api.eliteauth.lol as a Worker Custom Domain in Cloudflare.
+# Add these as secrets/variables in the dashboard or with Wrangler:
+# SUPABASE_URL
+# SUPABASE_SERVICE_ROLE_KEY
+# ELITEAUTH_SIGNING_PRIVATE_JWK

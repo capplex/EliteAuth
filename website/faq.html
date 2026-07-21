@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Answers to common questions about EliteAuth licensing, device binding, sessions, SDKs, support, and security." name="description"/>
+<meta content="#08040d" name="theme-color"/>
+<meta content="dark" name="color-scheme"/>
+<meta content="website" property="og:type"/>
+<meta content="EliteAuth" property="og:site_name"/>
+<meta content="FAQ — EliteAuth" property="og:title"/>
+<meta content="Answers to common questions about EliteAuth licensing, device binding, sessions, SDKs, support, and security." property="og:description"/>
+<meta content="https://eliteauth.lol/faq.html" property="og:url"/>
+<link href="https://eliteauth.lol/faq.html" rel="canonical"/>
+<title>FAQ — EliteAuth</title>
+<link href="/assets/eliteauth-logo.png" rel="icon"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<link href="/styles.css?v=20260721-4" rel="stylesheet"/>
+<meta content="summary" name="twitter:card"/><meta content="FAQ — EliteAuth" name="twitter:title"/><meta content="Answers to common questions about EliteAuth licensing, device binding, sessions, SDKs, support, and security." name="twitter:description"/></head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="nav-wrap">
+<nav aria-label="Primary navigation" class="nav container">
+<a aria-label="EliteAuth home" class="brand" href="index.html"><img alt="" src="/assets/eliteauth-logo.png"/><span>Elite<span class="gradient-text">Auth</span></span></a>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="Open navigation" class="menu-btn" id="menuBtn" type="button"><span></span><span></span><span></span></button>
+<div class="nav-links" id="navLinks">
+<div class="nav-dropdown">
+<a class="nav-trigger" href="product.html">Product <span aria-hidden="true">⌄</span></a>
+<div class="nav-dropdown-menu">
+<a href="product.html">Product overview</a>
+<a href="features.html">Features</a>
+<a href="security.html">Security</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a class="nav-trigger active" href="docs.html">Resources <span aria-hidden="true">⌄</span></a>
+<div class="nav-dropdown-menu">
+<a href="docs.html">Documentation</a>
+<a aria-current="page" class="active" href="faq.html">FAQ</a>
+<a href="responsible-disclosure.html">Responsible disclosure</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a class="nav-trigger" href="about.html">Company <span aria-hidden="true">⌄</span></a>
+<div class="nav-dropdown-menu">
+<a href="about.html">About EliteAuth</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a class="nav-trigger" href="terms.html">Legal <span aria-hidden="true">⌄</span></a>
+<div class="nav-dropdown-menu">
+<a href="terms.html">Terms</a>
+<a href="privacy.html">Privacy</a>
+<a href="cookies.html">Cookies</a>
+<a href="acceptable-use.html">Acceptable use</a>
+</div>
+</div>
+<a class="nav-single" href="donate.html">Donate</a>
+</div>
+<div class="nav-actions"><a class="btn btn-ghost" href="login.html">Sign in</a><a class="btn btn-primary" href="register.html">Get started →</a></div>
+</nav>
+</header>
+<main class="page-main" id="main-content">
+<section class="page-hero container reveal">
+<span class="page-kicker">FAQ</span>
+<h1>Answers before you <span class="gradient-text">start building.</span></h1>
+<p>Common questions about pricing, licensing, device binding, sessions, integrations, privacy, and support.</p>
+</section>
+<section class="container faq-layout reveal"><div class="faq-list">
+<details open=""><summary>Is EliteAuth really free forever?</summary><p>Yes. EliteAuth has no paid plan, trial period, premium feature tier, or license-count upgrade. Optional donations help with infrastructure and development but never unlock extra features.</p></details>
+<details><summary>Which languages are supported?</summary><p>The included project bundle contains SDKs or examples for C#, C++, Python, JavaScript, TypeScript, Java, Go, and Rust. All clients use the same HTTP endpoints.</p></details>
+<details><summary>How does HWID binding work?</summary><p>A license can bind to a device identifier during its first successful activation. Later activations must present the same identifier unless the application owner approves a reset request.</p></details>
+<details><summary>When does a timed license begin?</summary><p>The included database setup supports starting the license duration on first successful HWID binding, rather than when the key is generated.</p></details>
+<details><summary>Can I generate licenses in bulk?</summary><p>Yes. The dashboard supports bulk generation, search, pagination, copying, and TXT or CSV export.</p></details>
+<details><summary>What should be embedded in my software?</summary><p>Only the worker API URL, public App ID, and application version. Never include the Supabase service-role key or application server secret in distributable client software.</p></details>
+<details><summary>Does EliteAuth replace code signing or anti-tamper tools?</summary><p>No. Authentication and licensing are one layer. Use secure update delivery, code signing, server-side authorization where possible, and platform-specific hardening for a broader security posture.</p></details>
+<details><summary>How do I report a vulnerability?</summary><p>Email <a href="mailto:security@eliteauth.lol">security@eliteauth.lol</a> and follow the <a href="responsible-disclosure.html">responsible disclosure policy</a>. Avoid accessing unrelated data or disrupting the service.</p></details>
+<details><summary>How do I get account or integration help?</summary><p>Email <a href="mailto:support@eliteauth.lol">support@eliteauth.lol</a> with a clear description, the affected page or endpoint, and any non-sensitive error message. Do not email passwords, session tokens, license keys, or server secrets.</p></details>
+<details><summary>Can EliteAuth be used for any software?</summary><p>Use must comply with the <a href="acceptable-use.html">Acceptable Use Policy</a>. The platform may not be used to enable malware, credential theft, unauthorized access, evasion, or other illegal or harmful activity.</p></details>
+</div><aside class="contact-panel"><img alt="" src="/assets/eliteauth-logo.png"/><h2>Still need help?</h2><p>For account and integration support, contact the EliteAuth support team.</p><a class="btn btn-primary" href="mailto:support@eliteauth.lol">Email support</a><small>support@eliteauth.lol</small></aside></section>
+</main>
+<footer class="site-footer">
+<div class="container footer-grid">
+<div class="footer-brand-column">
+<a class="brand" href="index.html"><img alt="" src="/assets/eliteauth-logo.png"/><span>Elite<span class="gradient-text">Auth</span></span></a>
+<p>Authentication, software licensing, device binding, and session management for developers.</p>
+<div class="footer-community"><span>Official Discord</span><strong>eliteauth</strong></div>
+</div>
+<div class="footer-column"><h2>Product</h2><a href="product.html">Overview</a><a href="features.html">Features</a><a href="security.html">Security</a><a href="docs.html">Documentation</a></div>
+<div class="footer-column"><h2>Company</h2><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="donate.html">Donate</a><a href="responsible-disclosure.html">Responsible disclosure</a></div>
+<div class="footer-column"><h2>Legal</h2><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="cookies.html">Cookies</a><a href="acceptable-use.html">Acceptable use</a></div>
+<div class="footer-column footer-contact"><h2>Contact</h2><a href="mailto:support@eliteauth.lol">Support<br/><span>support@eliteauth.lol</span></a><a href="mailto:admin@eliteauth.lol">Administration<br/><span>admin@eliteauth.lol</span></a><a href="mailto:security@eliteauth.lol">Security<br/><span>security@eliteauth.lol</span></a></div>
+</div>
+<div class="container footer-bottom"><span>© 2026 EliteAuth. All rights reserved.</span><span>Free forever. Optional donations never unlock extra features.</span></div>
+</footer>
+<script src="/app.js?v=20260721-5"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Learn how to report a potential security vulnerability to EliteAuth safely and responsibly." name="description"/>
+<meta content="#08040d" name="theme-color"/>
+<meta content="dark" name="color-scheme"/>
+<meta content="website" property="og:type"/>
+<meta content="EliteAuth" property="og:site_name"/>
+<meta content="Responsible Disclosure — EliteAuth" property="og:title"/>
+<meta content="Learn how to report a potential security vulnerability to EliteAuth safely and responsibly." property="og:description"/>
+<meta content="https://eliteauth.lol/responsible-disclosure.html" property="og:url"/>
+<link href="https://eliteauth.lol/responsible-disclosure.html" rel="canonical"/>
+<title>Responsible Disclosure — EliteAuth</title>
+<link href="/assets/eliteauth-logo.png" rel="icon"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<link href="/styles.css?v=20260721-4" rel="stylesheet"/>
+<meta content="summary" name="twitter:card"/><meta content="Responsible Disclosure — EliteAuth" name="twitter:title"/><meta content="Learn how to report a potential security vulnerability to EliteAuth safely and responsibly." name="twitter:description"/></head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="nav-wrap">
+<nav aria-label="Primary navigation" class="nav container">
+<a aria-label="EliteAuth home" class="brand" href="index.html"><img alt="" src="/assets/eliteauth-logo.png"/><span>Elite<span class="gradient-text">Auth</span></span></a>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="Open navigation" class="menu-btn" id="menuBtn" type="button"><span></span><span></span><span></span></button>
+<div class="nav-links" id="navLinks">
+<div class="nav-dropdown">
+<a class="nav-trigger" href="product.html">Product <span aria-hidden="true">⌄</span></a>
+<div class="nav-dropdown-menu">
+<a href="product.html">Product overview</a>
+<a href="features.html">Features</a>
+<a href="security.html">Security</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a class="nav-trigger active" href="docs.html">Resources <span aria-hidden="true">⌄</span></a>
+<div class="nav-dropdown-menu">
+<a href="docs.html">Documentation</a>
+<a href="faq.html">FAQ</a>
+<a aria-current="page" class="active" href="responsible-disclosure.html">Responsible disclosure</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a class="nav-trigger" href="about.html">Company <span aria-hidden="true">⌄</span></a>
+<div class="nav-dropdown-menu">
+<a href="about.html">About EliteAuth</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a class="nav-trigger" href="terms.html">Legal <span aria-hidden="true">⌄</span></a>
+<div class="nav-dropdown-menu">
+<a href="terms.html">Terms</a>
+<a href="privacy.html">Privacy</a>
+<a href="cookies.html">Cookies</a>
+<a href="acceptable-use.html">Acceptable use</a>
+</div>
+</div>
+<a class="nav-single" href="donate.html">Donate</a>
+</div>
+<div class="nav-actions"><a class="btn btn-ghost" href="login.html">Sign in</a><a class="btn btn-primary" href="register.html">Get started →</a></div>
+</nav>
+</header>
+<main class="page-main" id="main-content">
+<section class="page-hero container reveal">
+<span class="page-kicker">Responsible disclosure</span>
+<h1>Help us protect <span class="gradient-text">EliteAuth users.</span></h1>
+<p>We welcome good-faith security research that follows the rules below. Clear reports help us understand, reproduce, and resolve vulnerabilities safely.</p>
+<div class="page-hero-actions"><a class="btn btn-primary btn-large" href="mailto:security@eliteauth.lol?subject=EliteAuth%20security%20report">Email security team</a><a class="btn btn-secondary btn-large" href="security.html">Security overview</a></div>
+</section>
+<section class="container disclosure-layout reveal"><article class="legal-content"><section class="policy-section"><h2>What to include</h2><ul class="check-list"><li>A concise description of the vulnerability and its potential impact.</li><li>The affected URL, endpoint, component, or version.</li><li>Reproduction steps or a minimal proof of concept.</li><li>Relevant screenshots, logs, or request and response samples with secrets removed.</li><li>Your preferred name and whether you want public credit.</li></ul><div class="notice inline"><b>Send reports to security@eliteauth.lol</b><p>Do not include active passwords, server secrets, service-role keys, session tokens, or unnecessary personal data in the first message.</p></div></section>
+<section class="policy-section"><h2>Good-faith research rules</h2><ul class="check-list"><li>Test only accounts and data you own or have explicit permission to use.</li><li>Stop immediately if you encounter unrelated personal data, secrets, or access to another user’s workspace.</li><li>Do not perform denial-of-service testing, spam, social engineering, physical attacks, or destructive actions.</li><li>Use the minimum access needed to demonstrate the issue and do not retain collected data.</li><li>Give us a reasonable opportunity to investigate and fix the issue before public disclosure.</li><li>Follow applicable law and avoid privacy violations or service disruption.</li></ul></section>
+<section class="policy-section"><h2>Safe harbor</h2><p>When research is conducted in good faith and in accordance with this policy, we will treat it as authorized security research and will not pursue legal action solely for accidental, limited violations caused by that research. This safe harbor does not apply to extortion, threats, data theft, disruption, intentional harm, or activity outside this policy.</p></section>
+<section class="policy-section"><h2>Response process</h2><div class="process-list"><div><span>1</span><p><b>Acknowledgement</b><br/>We review incoming reports and confirm receipt when enough information is available.</p></div><div><span>2</span><p><b>Triage</b><br/>We assess reproducibility, severity, affected components, and immediate risk.</p></div><div><span>3</span><p><b>Remediation</b><br/>We work on a proportionate fix and may request validation or additional details.</p></div><div><span>4</span><p><b>Closure</b><br/>We confirm resolution and coordinate disclosure or credit where appropriate.</p></div></div><p>Response and remediation times vary based on severity, complexity, and operational constraints. This policy does not promise a bounty or payment.</p></section>
+<section class="policy-section"><h2>Out of scope</h2><p>Examples include clickjacking on pages without sensitive actions, missing security headers without a demonstrated impact, self-XSS, brute-force reports without practical impact, denial-of-service testing, vulnerabilities only in unsupported third-party software, and issues requiring a victim to disable standard browser protections.</p></section></article><aside class="contact-panel sticky"><img alt="" src="/assets/eliteauth-logo.png"/><h2>Security reports</h2><p>Use a clear subject line and remove sensitive credentials.</p><a class="btn btn-primary" href="mailto:security@eliteauth.lol?subject=EliteAuth%20security%20report">security@eliteauth.lol</a><small>For general support, use support@eliteauth.lol.</small></aside></section>
+</main>
+<footer class="site-footer">
+<div class="container footer-grid">
+<div class="footer-brand-column">
+<a class="brand" href="index.html"><img alt="" src="/assets/eliteauth-logo.png"/><span>Elite<span class="gradient-text">Auth</span></span></a>
+<p>Authentication, software licensing, device binding, and session management for developers.</p>
+<div class="footer-community"><span>Official Discord</span><strong>eliteauth</strong></div>
+</div>
+<div class="footer-column"><h2>Product</h2><a href="product.html">Overview</a><a href="features.html">Features</a><a href="security.html">Security</a><a href="docs.html">Documentation</a></div>
+<div class="footer-column"><h2>Company</h2><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="donate.html">Donate</a><a href="responsible-disclosure.html">Responsible disclosure</a></div>
+<div class="footer-column"><h2>Legal</h2><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="cookies.html">Cookies</a><a href="acceptable-use.html">Acceptable use</a></div>
+<div class="footer-column footer-contact"><h2>Contact</h2><a href="mailto:support@eliteauth.lol">Support<br/><span>support@eliteauth.lol</span></a><a href="mailto:admin@eliteauth.lol">Administration<br/><span>admin@eliteauth.lol</span></a><a href="mailto:security@eliteauth.lol">Security<br/><span>security@eliteauth.lol</span></a></div>
+</div>
+<div class="container footer-bottom"><span>© 2026 EliteAuth. All rights reserved.</span><span>Free forever. Optional donations never unlock extra features.</span></div>
+</footer>
+<script src="/app.js?v=20260721-5"></script>
+</body>
+</html>

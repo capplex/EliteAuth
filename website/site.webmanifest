@@ -1,0 +1,10 @@
+{
+  "name": "EliteAuth",
+  "short_name": "EliteAuth",
+  "description": "Authentication and software licensing for developers.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030205",
+  "theme_color": "#08040d",
+  "icons": [{"src": "/assets/eliteauth-logo.png", "sizes": "512x512", "type": "image/png"}]
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Dashboard — EliteAuth</title><link href="/assets/eliteauth-logo.png" rel="icon"/><link href="/styles.css?v=20260721-4" rel="stylesheet"/><meta content="Manage EliteAuth applications, software licenses, sessions, users, webhooks, and audit activity." name="description"/><meta content="#08040d" name="theme-color"/><link href="/site.webmanifest" rel="manifest"/></head><body class="app-body" data-page="dashboard">
+<div class="app-layout">
+<aside class="sidebar">
+<a class="brand" href="index.html"><img alt="EliteAuth" src="/assets/eliteauth-logo.png"/><span>EliteAuth</span></a>
+<nav aria-label="Dashboard navigation" class="side-nav">
+<button class="side-link active" data-dashboard-tab="overview" type="button"><svg class="dashboard-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> <span>Overview</span></button>
+<button class="side-link" data-dashboard-tab="applications" type="button"><svg class="dashboard-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 9v12"/></svg> <span>Applications</span></button>
+<button class="side-link" data-dashboard-tab="licenses" type="button"><svg class="dashboard-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="m11 12 8-8 2 2-2 2 2 2-3 3-2-2-3 3"/></svg> <span>Licenses</span></button>
+<button class="side-link" data-dashboard-tab="users" type="button"><svg class="dashboard-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg> <span>Users</span></button>
+<button class="side-link" data-dashboard-tab="sessions" type="button"><svg class="dashboard-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> <span>Sessions</span></button>
+<button class="side-link" data-dashboard-tab="webhooks" type="button"><svg class="dashboard-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16.5a3 3 0 1 1-2.83 4H8.5a5 5 0 0 1-4.33-7.5M6 7.5a3 3 0 1 1 4.83-2.36l3.34 5.78M18 7.5a3 3 0 1 1-2.83-4H11.5"/></svg> <span>Webhooks</span></button>
+<button class="side-link" data-dashboard-tab="audit" type="button"><svg class="dashboard-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5h11M9 12h11M9 19h11"/><circle cx="4" cy="5" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="19" r="1"/></svg> <span>Audit logs</span></button>
+<button class="side-link support-link" data-dashboard-tab="support" type="button"><svg class="dashboard-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg> <span>Support</span></button>
+</nav>
+<div class="sidebar-meta"><a href="docs.html"><span>Documentation</span></a><a href="security.html"><span>Security</span></a><a href="faq.html"><span>Support &amp; FAQ</span></a><small>Discord eliteauth</small></div></aside>
+<main class="app-main">
+<div class="loading-state" id="dashboardLoading">Loading your dashboard…</div>
+<div hidden="" id="dashboardContent">
+<header class="app-top">
+<div><h1 id="pageTitle">Overview</h1><p id="pageSubtitle">Your EliteAuth workspace at a glance.</p></div>
+<div class="dashboard-actions">
+<button class="btn btn-secondary" id="openApplicationModal">+ Application</button>
+<button class="btn btn-primary" id="openLicenseModal">+ License</button>
+<button class="btn btn-ghost" id="logoutButton">Sign out</button>
+</div>
+</header>
+<section class="dashboard-view active" data-dashboard-view="overview">
+<div class="account-line">Signed in as <strong id="displayName">Developer</strong> · <span id="accountEmail"></span></div>
+<section class="app-grid">
+<article class="metric"><div class="metric-head"><span>Applications</span><span class="metric-icon"><svg class="dashboard-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 9v12"/></svg></span></div><strong id="applicationCount">0</strong></article>
+<article class="metric"><div class="metric-head"><span>Total licenses</span><span class="metric-icon"><svg class="dashboard-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="m11 12 8-8 2 2-2 2 2 2-3 3-2-2-3 3"/></svg></span></div><strong id="licenseCount">0</strong></article>
+<article class="metric"><div class="metric-head"><span>Active licenses</span><span class="metric-icon"><svg class="dashboard-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></span></div><strong id="activeLicenseCount">0</strong></article>
+<article class="metric"><div class="metric-head"><span>Disabled licenses</span><span class="metric-icon"><svg class="dashboard-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 9 6 6m0-6-6 6"/></svg></span></div><strong id="disabledLicenseCount">0</strong></article>
+</section>
+<section class="panel-grid">
+<article class="panel"><h3>Your applications</h3><div class="data-list" id="applicationList"></div></article>
+<article class="panel"><h3>Recent licenses</h3><div class="license-list" id="licenseList"></div></article>
+</section>
+<section class="panel hwid-panel"><h3>HWID reset requests</h3><p class="panel-copy">Only the application owner can approve a reset.</p><div class="request-list" id="hwidRequestList"></div></section>
+</section>
+<section class="dashboard-view" data-dashboard-view="applications">
+<section class="section-heading"><div><h2>Applications</h2><p>Create products and view their public integration IDs.</p></div><button class="btn btn-primary" data-open="applicationModal">+ New application</button></section>
+<article class="panel"><div class="table-wrap"><table class="dashboard-table"><thead><tr><th>Name</th><th>App ID</th><th>Version</th><th>Key format</th><th>Integrity</th><th>Created</th><th>Actions</th></tr></thead><tbody id="applicationsTable"></tbody></table></div></article>
+</section>
+<section class="dashboard-view" data-dashboard-view="licenses">
+<section class="section-heading"><div><h2>Licenses</h2><p>Generate, disable, and create HWID reset links.</p></div><button class="btn btn-primary" data-open="licenseModal">+ Generate license</button></section>
+<article class="panel">
+<div class="license-page-toolbar">
+<input autocomplete="off" id="licensesSearch" placeholder="Search by key, HWID, app or status…" type="search"/>
+<select aria-label="Filter licenses by application" id="licensesApplicationFilter"><option value="">All applications</option></select>
+<select aria-label="Licenses per page" id="licensesPageSize">
+<option value="10">10 per page</option>
+<option selected="" value="25">25 per page</option>
+<option value="50">50 per page</option>
+<option value="100">100 per page</option>
+</select>
+</div>
+<div class="license-list" id="licensesFullList"></div>
+<div class="generated-pagination license-page-pagination">
+<button class="btn btn-secondary" id="licensesPrevious" type="button">← Previous</button>
+<div><strong id="licensesPageLabel">Page 1 of 1</strong><small id="licensesRange">Showing 0–0 of 0</small></div>
+<button class="btn btn-secondary" id="licensesNext" type="button">Next →</button>
+</div>
+</article>
+</section>
+<section class="dashboard-view" data-dashboard-view="users">
+<section class="section-heading"><div><h2>Users</h2><p>Activated machines derived from bound licenses.</p></div></section>
+<article class="panel"><div class="table-wrap"><table class="dashboard-table"><thead><tr><th>License</th><th>Application</th><th>HWID</th><th>Status</th><th>Expiry</th></tr></thead><tbody id="usersTable"></tbody></table></div></article>
+</section>
+<section class="dashboard-view" data-dashboard-view="sessions">
+<section class="section-heading"><div><h2>Sessions</h2><p>Recent sessions issued by the EliteAuth Worker API.</p></div><button class="btn btn-secondary" id="refreshSessions" type="button">Refresh</button></section>
+<article class="panel"><div class="table-wrap"><table class="dashboard-table"><thead><tr><th>Application</th><th>License</th><th>HWID</th><th>Created</th><th>Expires</th><th>Status</th></tr></thead><tbody id="sessionsTable"></tbody></table></div></article>
+</section>
+<section class="dashboard-view" data-dashboard-view="webhooks">
+<section class="section-heading"><div><h2>Webhooks</h2><p>Prepare webhook settings for your backend integration.</p></div></section>
+<article class="panel settings-panel">
+<div class="field"><label>Webhook endpoint</label><input id="webhookUrl" placeholder="https://your-server.com/eliteauth/webhook" type="url"/></div>
+<div class="field"><label>Signing secret</label><div class="input-action"><input id="webhookSecret" placeholder="Generate a signing secret" readonly=""/><button class="btn btn-secondary" id="generateWebhookSecret" type="button">Generate</button></div></div>
+<div class="webhook-events">
+<label class="format-check"><input checked="" type="checkbox"/><span>License activated</span></label>
+<label class="format-check"><input checked="" type="checkbox"/><span>HWID reset requested</span></label>
+<label class="format-check"><input checked="" type="checkbox"/><span>License expired or disabled</span></label>
+</div>
+<button class="btn btn-primary" id="saveWebhook" type="button">Save webhook</button>
+<p class="save-message" id="webhookMessage"></p><p class="implementation-note">Webhook delivery requires backend configuration in the Worker or your own service. Saving here currently prepares the settings only.</p>
+</article>
+</section>
+<section class="dashboard-view" data-dashboard-view="audit">
+<section class="section-heading"><div><h2>Audit logs</h2><p>A timeline of application, license, and HWID activity.</p></div></section>
+<article class="panel"><div class="audit-list" id="auditList"></div></article>
+</section>
+<section class="dashboard-view" data-dashboard-view="support">
+<section class="section-heading"><div><h2>Support EliteAuth</h2><p>EliteAuth is free forever. Optional crypto donations help cover development and infrastructure.</p></div></section>
+<div class="support-grid">
+<article class="panel donation-panel">
+<div class="free-badge">FREE FOREVER · UNLIMITED ACCESS</div>
+<h3>Make an optional donation</h3>
+<p class="panel-copy">Choose a cryptocurrency and enter the exact amount you want to send. There are no paid plans or locked features.</p>
+<div class="field"><label>Cryptocurrency</label><select id="donationCoin">
+<option value="BTC">Bitcoin (BTC)</option>
+<option value="ETH">Ethereum (ETH)</option>
+<option value="LTC">Litecoin (LTC)</option>
+<option value="SOL">Solana (SOL)</option>
+<option value="USDT">USDT (ERC-20 only)</option>
+</select></div>
+<div class="field"><label>Donation amount (USD)</label><div class="usd-amount-input"><span>$</span><input id="donationAmount" inputmode="decimal" min="1" placeholder="25.00" step="0.01" type="number"/></div><small class="field-help">Enter how much you want to donate in US dollars. The estimated crypto amount is calculated automatically.</small></div>
+<button class="btn btn-primary" id="prepareDonation" type="button">Prepare donation</button>
+<p class="save-message" id="donationMessage"></p>
+</article>
+<article class="panel donation-details" id="donationDetails">
+<h3>Wallet details</h3>
+<div class="donation-network"><span>Network</span><strong id="donationNetwork">Bitcoin</strong></div>
+<div class="wallet-address"><span>Wallet address</span><code id="donationAddress"></code><button class="btn btn-secondary" id="copyDonationAddress" type="button">Copy address</button></div>
+<div class="wallet-address"><span>Estimated crypto amount</span><code id="donationPreparedAmount">Enter a USD amount</code><button class="btn btn-secondary" id="copyDonationAmount" type="button">Copy amount</button></div>
+<a class="btn btn-primary" hidden="" href="#" id="openDonationWallet">Open wallet</a>
+<div class="donation-warning" id="donationWarning">Always verify the wallet address and network before sending.</div>
+</article>
+</div>
+</section>
+</div>
+</main>
+</div>
+<div class="modal-backdrop" hidden="" id="applicationModal"><section class="modal"><button class="modal-close" data-close-modal="applicationModal">×</button><h2>Create application</h2><p>Create a product workspace for licenses and users.</p><form id="applicationForm">
+<div class="field"><label>Application name</label><input maxlength="80" name="applicationName" placeholder="Enchantment" required=""/></div>
+<div class="field"><label>Application version</label><input maxlength="30" name="applicationVersion" placeholder="1.0.0" required="" value="1.0.0"/></div>
+<label class="format-check integrity-toggle"><input id="enforceIntegrity" name="enforceIntegrity" type="checkbox"/><span>Enforce approved build SHA-256</span></label>
+<div class="field"><label>Approved build SHA-256</label><input autocomplete="off" disabled="" id="integritySha256" maxlength="64" minlength="64" name="integritySha256" pattern="[A-Fa-f0-9]{64}" placeholder="64-character SHA-256 hash"/><p class="field-help">Hash the exact executable or package you ship. Modified builds will be rejected by the API.</p></div>
+<div class="field"><label>License prefix</label><input id="licensePrefix" maxlength="20" name="licensePrefix" placeholder="ENMNT" value="ENMNT"/></div>
+<div class="format-grid">
+<div class="field"><label>Random groups</label><input id="keyGroups" max="10" min="1" name="keyGroups" required="" step="1" type="number" value="4"/></div>
+<div class="field"><label>Characters per group</label><input id="charsPerGroup" max="16" min="2" name="charsPerGroup" required="" step="1" type="number" value="4"/></div>
+</div>
+<div class="format-grid">
+<div class="field"><label>Separator</label><select id="keySeparator" name="keySeparator">
+<option selected="" value="-">Dash (-)</option>
+<option value="_">Underscore (_)</option>
+<option value=".">Dot (.)</option>
+<option value="">None</option>
+</select></div>
+<div class="field"><label>Character set</label><select id="keyCharset" name="keyCharset">
+<option selected="" value="alphanumeric">A-Z + 0-9</option>
+<option value="letters">A-Z only</option>
+<option value="numbers">0-9 only</option>
+</select></div>
+</div>
+<div class="format-grid">
+<div class="field"><label>Letter case</label><select id="keyCase" name="keyCase">
+<option selected="" value="upper">UPPERCASE</option>
+<option value="lower">lowercase</option>
+</select></div>
+<label class="format-check"><input checked="" id="excludeAmbiguous" name="excludeAmbiguous" type="checkbox"/><span>Exclude O, 0, I, 1 and L</span></label>
+</div>
+<div class="license-preview-box"><span>Preview</span><code id="licenseFormatPreview">ENMNT-7F2K-9XQM-4LPA-8TWR</code></div>
+<button class="btn btn-primary" type="submit">Create application</button>
+</form></section></div>
+<div class="modal-backdrop" hidden="" id="licenseModal"><section class="modal"><button class="modal-close" data-close-modal="licenseModal">×</button><h2>Generate licenses</h2><p>Create one or multiple unique license keys.</p><form id="licenseForm"><div class="field"><label>Application</label><select id="applicationId" name="applicationId" required=""><option value="">Select application</option></select></div><div class="field"><label>Quantity</label><input id="licenseQuantity" max="1000" min="1" name="licenseQuantity" required="" step="1" type="number" value="1"/><p class="field-help">Generate up to 1,000 licenses at once.</p></div><div class="duration-grid">
+<div class="field"><label>Duration amount</label><input id="durationAmount" max="99999" min="1" name="durationAmount" required="" step="1" type="number" value="30"/></div>
+<div class="field"><label>Duration unit</label><select id="durationUnit" name="durationUnit">
+<option value="minutes">Minutes</option>
+<option value="hours">Hours</option>
+<option selected="" value="days">Days</option>
+<option value="weeks">Weeks</option>
+<option value="months">Months</option>
+<option value="years">Years</option>
+<option value="lifetime">Lifetime</option>
+</select></div>
+</div>
+<p class="field-help" id="durationPreview">This license will expire 30 days after its first successful activation.</p><button class="btn btn-primary" type="submit">Generate licenses</button></form></section></div>
+<div class="modal-backdrop" hidden="" id="generatedLicensesModal">
+<section class="modal generated-licenses-modal">
+<button class="modal-close" data-close-modal="generatedLicensesModal">×</button>
+<h2>Generated licenses</h2>
+<p id="generatedLicensesCount">Licenses generated</p>
+<div class="generated-toolbar">
+<input autocomplete="off" id="generatedLicensesSearch" placeholder="Search generated licenses…" type="search"/>
+<select aria-label="Licenses per page" id="generatedLicensesPageSize">
+<option value="25">25 per page</option>
+<option selected="" value="50">50 per page</option>
+<option value="100">100 per page</option>
+</select>
+</div>
+<div class="generated-license-list" id="generatedLicensesList"></div>
+<div class="generated-pagination">
+<button class="btn btn-secondary" id="generatedLicensesPrevious" type="button">← Previous</button>
+<div><strong id="generatedLicensesPageLabel">Page 1 of 1</strong><small id="generatedLicensesRange">Showing 0–0 of 0</small></div>
+<button class="btn btn-secondary" id="generatedLicensesNext" type="button">Next →</button>
+</div>
+<div class="generated-actions">
+<button class="btn btn-secondary" id="copyGeneratedLicensesPage" type="button">Copy this page</button>
+<button class="btn btn-primary" id="copyAllGeneratedLicenses" type="button">Copy all licenses</button>
+<button class="btn btn-secondary" id="downloadGeneratedLicensesTxt" type="button">Download .txt</button>
+<button class="btn btn-secondary" id="downloadGeneratedLicensesCsv" type="button">Download .csv</button>
+</div>
+</section>
+</div>
+<div class="modal-backdrop" hidden="" id="credentialsModal">
+<section class="modal credentials-modal">
+<button class="modal-close" data-close-modal="credentialsModal">×</button>
+<h2>Application credentials</h2>
+<p>Save these now. The server secret is only shown once.</p>
+<div class="credential-row"><span>Owner ID</span><code id="credentialOwnerId"></code></div>
+<div class="credential-row"><span>App ID</span><code id="credentialAppId"></code></div>
+<div class="credential-row secret-row"><span>Server secret</span><code id="credentialServerSecret"></code></div>
+<div class="credential-row"><span>API URL</span><code id="credentialApiUrl">https://api.eliteauth.lol</code></div>
+<div class="credential-row"><span>Response verification key</span><code id="credentialSigningPublicKey">Yo7wBxsz8mCN6LX89Ja0H3pNlcLXJHrJ50u5BtZuakQ</code></div>
+<div class="credential-warning">Put the App ID, API URL, and pinned response verification key in your software. Keep the server secret private and use it only from trusted server-side code.</div>
+<button class="btn btn-primary" id="downloadIntegrationConfig" type="button">Download software config</button>
+</section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="/supabase-config.js?v=20260721-2"></script><script src="/app.js?v=20260721-5"></script></body></html>
