@@ -86,7 +86,7 @@ Report vulnerabilities privately to [security@eliteauth.lol](mailto:security@eli
 - Support: [support@eliteauth.lol](mailto:support@eliteauth.lol)
 - Administration: [admin@eliteauth.lol](mailto:admin@eliteauth.lol)
 - Security: [security@eliteauth.lol](mailto:security@eliteauth.lol)
-- Website: [eliteauth.lol](https://eliteauth.lol)
+- Website: [eliteauth.lol](https://eliteauth.lol) [eliteauth.cc](https://eliteauth.cc)
 - Discord: `eliteauth`
 
 ## Contributing
